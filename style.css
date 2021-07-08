@@ -21,14 +21,16 @@ main h1 {
 #color-palette {
   width: 50%;
   margin: 2em auto;
+  padding: 0;
 }
 
 .color {
   border: 1px solid black;
   display: inline-block;
-  width: 100px;
-  height: 100px;
+  width: 40px;
+  height: 40px;
   margin-left: 1.6em;
+  padding: 0;
 }
 
 .black {
@@ -45,4 +47,18 @@ main h1 {
 
 .green {
   background: green;
+}
+
+#pixel-board {
+  margin: 0 auto;
+
+}
+
+.pixel {
+  border: 1px solid black;
+  background: white;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  padding: 0;
 }
