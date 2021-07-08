@@ -10,8 +10,6 @@ main {
   margin: auto;
 }
 
-#color-palette {
-  border: 1px solid black;
-  width: 50%;
-  margin: auto;
+main h1 {
+  text-align: center;
 }
