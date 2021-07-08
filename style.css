@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  font-size: 16px;
+}
+
 main {
   width: 80%;
   border: 1px solid black;
@@ -12,4 +16,17 @@ main {
 
 main h1 {
   text-align: center;
+}
+
+#color-palette {
+  width: 50%;
+  margin: 2em auto;
+}
+
+.color {
+  border: 1px solid black;
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  margin-left: 1.6em;
 }
