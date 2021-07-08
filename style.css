@@ -30,3 +30,19 @@ main h1 {
   height: 100px;
   margin-left: 1.6em;
 }
+
+.black {
+  background: black;
+}
+
+.red {
+  background: red;
+}
+
+.purple {
+  background: purple;
+}
+
+.green {
+  background: green;
+}
