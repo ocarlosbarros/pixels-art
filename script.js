@@ -1,4 +1,4 @@
-window.onload = fillPalette;
+window.addEventListener('load', fillPalette)
 
 const pixelBoard = document.getElementById('pixel-board');
 const colorPalette = document.getElementById('color-palette');
@@ -15,9 +15,12 @@ function generateRGBNumber(){
 
 //Preenchendo palette com as cores
 function fillPalette(){
-      console.log(generateRGBNumber());
+  const colors = document.querySelectorAll('.color').forEach((color)=>{
+    color.style.backgroundColor = 'rgb(' + generateRGBNumber() + ',' + generateRGBNumber() + ',' + generateRGBNumber() + ')'
+  });
+  colorDefault.style.backgroundColor = '#000000';
 }
-
+   
 
 //Adiciona a cor preta a classe select
 paletteColorList[0].classList.add('selected');
