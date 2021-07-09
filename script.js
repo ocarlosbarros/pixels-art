@@ -1,20 +1,37 @@
-const pixelBoardSize = 5;
+window.onload = fillPalette;
+
 const pixelBoard = document.getElementById('pixel-board');
-pixelBoard.style.width = pixelBoardSize * 40 + 'px';
 const colorPalette = document.getElementById('color-palette');
-colorPalette.addEventListener('click', selectColor);
 const paletteColorList = document.querySelectorAll('.color');
+const pixelBoardSize = 5;
+
+//Define o tamanho total do pixel board
+pixelBoard.style.width = pixelBoardSize * 40 + 'px';
+
+function generateRGBNumber(){
+  const rgbNumber = Math.ceil(Math.random() * 255);
+  return rgbNumber;
+}
+
+//Preenchendo palette com as cores
+function fillPalette(){
+      console.log(generateRGBNumber());
+}
+
+
+//Adiciona a cor preta a classe select
 paletteColorList[0].classList.add('selected');
 
+//Preenche o board com os pixels
 fillBoard(pixelBoardSize);
 
 /**
  * source: Consultei o repositório Trybe exercise-end-block5 como base para criação e adaptação da função
  * Link:https://github.com/tryber/exercise-end-block5
- * @returns 
+ * @returns uma div de 40x40 (Pixel) 
  */
-function createPixel(){
-  let pixel = document.createElement('div');
+function createPixel()  {
+  const pixel = document.createElement('div');
   pixel.classList.add('pixel');
   return pixel; 
 }
@@ -23,7 +40,7 @@ function createPixel(){
  * Consultei o repositório Trybe exercise-end-block5 como base para criação e adaptação da função
  * Link:https://github.com/tryber/exercise-end-block5
  */
-function fillBoard(size){
+function fillBoard(size)  {
   for (let line = 0; line < size; line+= 1) {
     for (let column = 0; column < size; column += 1) {
       if(line <= size){
@@ -34,8 +51,8 @@ function fillBoard(size){
   }
 }
 
-
-function selectColor(event){
+colorPalette.addEventListener('click', selectColor);
+function selectColor(event) {
   const colorSelected = event.target;
   
   for (let index = 0; index < paletteColorList.length; index += 1) {
@@ -45,4 +62,7 @@ function selectColor(event){
       colorSelected.classList.add('selected');
     }
   }
+  const selectedClasses = colorSelected.className.split(' ');
+  console.log(selectedClasses[1]);
+  return selectedClasses[1];
 }
