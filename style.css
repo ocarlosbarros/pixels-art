@@ -33,22 +33,6 @@ main h1 {
   padding: 0;
 }
 
-.black {
-  background: black;
-}
-
-.red {
-  background: red;
-}
-
-.purple {
-  background: purple;
-}
-
-.green {
-  background: green;
-}
-
 #pixel-board {
   margin: 0 auto;
 
@@ -61,4 +45,8 @@ main h1 {
   height: 40px;
   display: inline-block;
   padding: 0;
+}
+
+.selected {
+  background: transparent;
 }

@@ -16,14 +16,14 @@ function generateRGBNumber(){
 //Preenchendo palette com as cores
 function fillPalette(){
   const colors = document.querySelectorAll('.color').forEach((color)=>{
+    /**
+     * source: Notação para rgb retirada com background color retirada do stackoverflow
+     * Link:https://stackoverflow.com/questions/14323082/why-doesnt-backgroundcolor-rgba-b-c-work
+     */
     color.style.backgroundColor = 'rgb(' + generateRGBNumber() + ',' + generateRGBNumber() + ',' + generateRGBNumber() + ')'
   });
   colorDefault.style.backgroundColor = '#000000';
 }
-   
-
-//Adiciona a cor preta a classe select
-paletteColorList[0].classList.add('selected');
 
 //Preenche o board com os pixels
 fillBoard(pixelBoardSize);
@@ -54,18 +54,35 @@ function fillBoard(size)  {
   }
 }
 
+function fillColorSelected(event, selected){
+  const pixel = event.target;
+  const bgColor = selected;
+  pixel.style.backgroundColor= '#000000'
+}
+
 colorPalette.addEventListener('click', selectColor);
 function selectColor(event) {
   const colorSelected = event.target;
+  console.log(colorSelected);
+  colorSelected.classList.add('selected');
   
   for (let index = 0; index < paletteColorList.length; index += 1) {
     
+    //Validacao para um elemento apenas ter a classe selected
     if (paletteColorList[index].classList[2] === 'selected') {
       paletteColorList[index].classList.remove('selected');
       colorSelected.classList.add('selected');
     }
   }
-  const selectedClasses = colorSelected.className.split(' ');
-  console.log(selectedClasses[1]);
-  return selectedClasses[1];
+
+  document.querySelectorAll('.pixel').forEach((pixel)=>{
+      /**
+       * source:Utilizado exemplo de código para poder passar mais de uma parametro utilizando o addEventListener e callback
+       * Link:https://cursos.alura.com.br/forum/topico-passando-parametros-para-funcao-anonima-dentro-do-addeventlistener-64709
+       */
+      pixel.addEventListener('click', function(event){
+        const elementSelected = colorSelected;
+        fillColorSelected(event, elementSelected);
+      });
+  });
 }
