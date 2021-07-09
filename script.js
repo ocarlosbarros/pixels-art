@@ -3,6 +3,8 @@ const pixelBoard = document.getElementById('pixel-board');
 pixelBoard.style.width = pixelBoardSize * 40 + 'px';
 const colorPalette = document.getElementById('color-palette');
 colorPalette.addEventListener('click', selectColor);
+const paletteColorList = document.querySelectorAll('.color');
+paletteColorList[0].classList.add('selected');
 
 fillBoard(pixelBoardSize);
 
@@ -34,20 +36,13 @@ function fillBoard(size){
 
 
 function selectColor(event){
-  const paletteColorList = document.querySelectorAll('.color')
   const colorSelected = event.target;
-  for (const color of paletteColorList) {
-    if(colorSelected.classList.length === 3){
-      colorSelected.classList.remove('selected');
-    }else if(color.classList.length < 2){
+  
+  for (let index = 0; index < paletteColorList.length; index += 1) {
+    
+    if (paletteColorList[index].classList[2] === 'selected') {
+      paletteColorList[index].classList.remove('selected');
       colorSelected.classList.add('selected');
     }
   }
-  console.log('--------------------------')
-  console.log('Selecionado', colorSelected);
-  console.log('--------------------------')
-  console.log('Black', paletteColorList[0])
-  console.log('Red', paletteColorList[1])
-  console.log('Purple', paletteColorList[3])
-  console.log('Green', paletteColorList[2])
 }
