@@ -54,26 +54,23 @@ function fillBoard(size)  {
   }
 }
 
-function fillColorSelected(event, selected){
+function fillColorSelected(event, colorSelected){
   const pixel = event.target;
-  const bgColor = selected;
-  pixel.style.backgroundColor= '#000000'
+  const bgColor = colorSelected;
+  pixel.style.backgroundColor= bgColor;
 }
 
 colorPalette.addEventListener('click', selectColor);
 function selectColor(event) {
   const colorSelected = event.target;
-  console.log(colorSelected);
-  colorSelected.classList.add('selected');
   
   for (let index = 0; index < paletteColorList.length; index += 1) {
-    
-    //Validacao para um elemento apenas ter a classe selected
-    if (paletteColorList[index].classList[2] === 'selected') {
-      paletteColorList[index].classList.remove('selected');
+    if(paletteColorList[index].classList[1] === 'selected'){
+        paletteColorList[index].classList.remove('selected');
+      }
       colorSelected.classList.add('selected');
-    }
   }
+  const background = colorSelected.style.backgroundColor;
 
   document.querySelectorAll('.pixel').forEach((pixel)=>{
       /**
@@ -81,8 +78,8 @@ function selectColor(event) {
        * Link:https://cursos.alura.com.br/forum/topico-passando-parametros-para-funcao-anonima-dentro-do-addeventlistener-64709
        */
       pixel.addEventListener('click', function(event){
-        const elementSelected = colorSelected;
-        fillColorSelected(event, elementSelected);
+        const colorSelected = background;
+        fillColorSelected(event, colorSelected);
       });
   });
 }
