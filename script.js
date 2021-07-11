@@ -1,7 +1,7 @@
-window.addEventListener('load', fillPalette)
+window.onload = fillDefault;
 
 const pixelBoard = document.getElementById('pixel-board');
-const colorPalette = document.getElementById('color-palette');
+//const colorPalette = document.getElementById('color-palette');
 const paletteColorList = document.querySelectorAll('.color');
 const pixelBoardSize = 5;
 
@@ -55,15 +55,13 @@ function fillBoard(size)  {
 }
 
 function fillColorSelected(event, colorSelected){
-  const pixel = event.target;
-  const bgColor = colorSelected;
-  pixel.style.backgroundColor= bgColor;
+  event.target.style.backgroundColor= colorSelected;
 }
 
+const colorPalette = document.getElementById('color-palette');
 colorPalette.addEventListener('click', selectColor);
 function selectColor(event) {
-  const colorSelected = event.target;
-  
+  colorSelected = event.target;
   for (let index = 0; index < paletteColorList.length; index += 1) {
     if(paletteColorList[index].classList[1] === 'selected'){
         paletteColorList[index].classList.remove('selected');
@@ -71,7 +69,6 @@ function selectColor(event) {
       colorSelected.classList.add('selected');
   }
   const background = colorSelected.style.backgroundColor;
-
   document.querySelectorAll('.pixel').forEach((pixel)=>{
       /**
        * source:Utilizado exemplo de código para poder passar mais de uma parametro utilizando o addEventListener e callback
@@ -83,3 +80,13 @@ function selectColor(event) {
       });
   });
 }
+
+function fillDefault(){
+  document.querySelectorAll('.pixel').forEach(pixel=>{
+  pixel.addEventListener('click', function(event){
+  const colorSelected = '#000000';
+  fillColorSelected(event, colorSelected);
+  });
+});
+}
+fillPalette();

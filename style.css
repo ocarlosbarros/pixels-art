@@ -48,5 +48,5 @@ main h1 {
 }
 
 .selected {
-  background: transparent;
+  background: rgb(0, 0, 0);
 }
