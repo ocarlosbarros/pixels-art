@@ -130,9 +130,9 @@ function fillDefault(){
 const btnLimpar = document.getElementById('clear-board');
 btnLimpar.addEventListener('click',clearBoard);
 function clearBoard(){
-    document.querySelectorAll('.pixel').forEach(pixel =>{
-      pixel.style.backgroundColor = '#FFFFFF';
-    });
+  document.querySelectorAll('.pixel').forEach(pixel =>{
+  pixel.style.backgroundColor = '#FFFFFF';
+  });
 }
 
 fillPalette();
