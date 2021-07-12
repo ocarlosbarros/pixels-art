@@ -2,31 +2,35 @@ const pixelBoard = document.getElementById('pixel-board');
 const paletteColorList = document.querySelectorAll('.color');
 let count = 0;
 
-const btnGenerateboard = document.getElementById('generate-board');
-btnGenerateboard.addEventListener('click', setBoardSize);
-
 function setBoardSize(){
   const inputBoardSize = document.getElementById('board-size');
   let boardSize = inputBoardSize.value;
   
-  if (count != 0){
+  if (count != 0) {
     clear();
   } 
   count += 1;
   
-  if(boardSize == '' && count > 1){
-    alert('Board inválido!');
-    boardSize = 5;
-  }else if (boardSize < 5){
-    boardSize = 5;
-  }else if( boardSize > 50){
-    boardSize = 50;
-  }
+  boardSize = verifySizeBoard(boardSize, count);
 
   fillBoard(boardSize);
   pixelBoard.style.width = boardSize * 40 + 'px';
   inputBoardSize.value = '';
   fillDefault();
+}
+
+const btnGenerateboard = document.getElementById('generate-board');
+btnGenerateboard.addEventListener('click', setBoardSize);
+
+function verifySizeBoard(size, count){
+  if(size == '' && count > 1) {
+    alert('Board inválido!');
+    return size = 5;
+  } else if(size < 5)  {
+    return size = 5;
+  } else if( size > 50)  {
+    return size = 50;
+  }
 }
 
 
