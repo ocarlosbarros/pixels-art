@@ -6,22 +6,24 @@
 
 body {
   font-size: 16px;
-  background: linear-gradient(90deg, rgb(20, 36, 40) 35%, rgba(104, 109, 114, 1) 80%, rgba(194, 194, 194, 1) 100%);
+  background: rgb(20, 36, 40);
 }
 
 main {
-  width: 80%;
   margin: 1em auto;
 }
 
 main h1 {
   text-align: center;
   color: white;
+  width: 100vw;
 }
 
 #color-palette {
   width: 50%;
-  margin: 2em auto;
+  position: relative;
+  top: 15px;
+  left: 31%;
   padding: 0;
 }
 
@@ -43,10 +45,10 @@ main h1 {
 .pixel {
   border: 1px solid black;
   background: white;
-  width: 40px;
-  height: 40px;
   display: inline-block;
   padding: 0;
+  width: 40px;
+  height: 40px;
 }
 
 .selected {
@@ -61,8 +63,8 @@ main h1 {
 button {
   background: rgb(71, 159, 118);
   border-radius: 5px;
-  width: 60px;
-  margin-left: 20px;
+  width: 100px;
+  margin-left: 5px;
   border: none;
   padding: 5px;
   color: white;
@@ -74,6 +76,7 @@ input {
   padding: 0.5em;
   border-radius: 5px;
   border: 1px solid black;
+  width: 180px;
 }
 
 input:focus {

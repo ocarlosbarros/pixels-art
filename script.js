@@ -1,21 +1,43 @@
 const pixelBoard = document.getElementById('pixel-board');
-//const colorPalette = document.getElementById('color-palette');
 const paletteColorList = document.querySelectorAll('.color');
-const pixelBoardSize = 5;
+let count = 0;
 
-//Define o tamanho total do pixel board
-pixelBoard.style.width = pixelBoardSize * 40 + 'px';
-
+const btnGenerateboard = document.getElementById('generate-board');
+btnGenerateboard.addEventListener('click', setBoardSize);
 
 function setBoardSize(){
-  console.log('teste');
+  const inputBoardSize = document.getElementById('board-size');
+  let boardSize = inputBoardSize.value;
+  
+  if (count != 0){
+    clear();
+  } 
+  count += 1;
+  
+  if(boardSize == '' && count > 1){
+    alert('Board inválido!');
+    boardSize = 5;
+  }else if (boardSize < 5){
+    boardSize = 5;
+  }else if( boardSize > 50){
+    boardSize = 50;
+  }
+
+  fillBoard(boardSize);
+  pixelBoard.style.width = boardSize * 40 + 'px';
+  inputBoardSize.value = '';
+  fillDefault();
 }
+
 
 
 function generateRGBNumber(){
   const rgbNumber = Math.ceil(Math.random() * 255);
   return rgbNumber;
 }
+
+const btnSortColors = document.getElementById('sort-colors');
+btnSortColors.addEventListener('click', fillPalette);
 
 //Preenchendo palette com as cores
 function fillPalette(){
@@ -29,12 +51,9 @@ function fillPalette(){
   colorDefault.style.backgroundColor = '#000000';
 }
 
-//Preenche o board com os pixels
-fillBoard(pixelBoardSize);
-
 /**
- * source: Consultei o repositório Trybe exercise-end-block5 como base para criação e adaptação da função
- * Link:https://github.com/tryber/exercise-end-block5
+ * source: Consultei o repositório Trybe exercise-end-bl  console.log(pixel);
+
  * @returns uma div de 40x40 (Pixel) 
  */
 function createPixel()  {
@@ -50,11 +69,21 @@ function createPixel()  {
 function fillBoard(size)  {
   for (let line = 0; line < size; line+= 1) {
     for (let column = 0; column < size; column += 1) {
-      if(line <= size){
+      if(line <= size && column <= size){
         let pixel = createPixel();
         pixelBoard.appendChild(pixel);
       }
     }
+  }
+  return size;
+}
+  
+
+function clear(){
+  const pixelList = document.querySelectorAll('.pixel');
+  console.log(pixelList);
+  for (let index = 0; index < pixelList.length; index+= 1) {
+    pixelList[index].remove('pixel');
   }
 }
 
@@ -87,12 +116,11 @@ function selectColor(event) {
 }
 
 function fillDefault(){
-  const pixelList = document.querySelectorAll('.pixel').forEach(pixel => {
+  document.querySelectorAll('.pixel').forEach( (pixel) => {
     pixel.addEventListener('click', function(){
       pixel.style.backgroundColor = '#000000';
     }) 
   });
-  console.log(pixelList);
 }
 
 const btnLimpar = document.getElementById('clear-board');
@@ -102,6 +130,6 @@ function clearBoard(){
       pixel.style.backgroundColor = '#FFFFFF';
     });
 }
+
 fillPalette();
-fillDefault();
 setBoardSize();
