@@ -6,6 +6,12 @@ const pixelBoardSize = 5;
 //Define o tamanho total do pixel board
 pixelBoard.style.width = pixelBoardSize * 40 + 'px';
 
+
+function setBoardSize(){
+  console.log('teste');
+}
+
+
 function generateRGBNumber(){
   const rgbNumber = Math.ceil(Math.random() * 255);
   return rgbNumber;
@@ -98,3 +104,4 @@ function clearBoard(){
 }
 fillPalette();
 fillDefault();
+setBoardSize();
